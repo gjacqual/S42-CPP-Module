@@ -6,20 +6,19 @@
 #    By: gjacqual <gjacqual@student.21-school.ru>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/30 23:10:10 by gjacqual          #+#    #+#              #
-#    Updated: 2022/05/13 15:34:33 by gjacqual         ###   ########.fr        #
+#    Updated: 2022/05/07 01:33:46 by gjacqual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program name
-NAME		:=	phonebook
+NAME		:=	megaphone
 
 # Compilation Parameters
-CXX			:=	c++
-CXXFLAGS		:=	-Wall -Wextra -Werror -MMD -std=c++98 -pedantic
+CXX			:=	clang++
+CXXFLAGS		:=	-Wall -Wextra -Werror -std=c++98 -pedantic
 RM			:=	rm -f
 
-# source files
-SRCS		:=	${shell find . -name '*.cpp'}
+SRCS	=	./megaphone.cpp
 			
 # Object files
 OBJS_DIR 	:=	./objs/
@@ -38,7 +37,7 @@ ${OBJS_DIR}:
 			@mkdir -p ${OBJS_DIR}	
 
 ${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}  
-				${CXX} ${CXXFLAGS} -c  $< -o $@
+				${CXX} ${CXXFLAGS} -c $< -o $@
 
 #Utils
 clean:
