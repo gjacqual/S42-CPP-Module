@@ -1,14 +1,11 @@
-//
-// Created by max00 on 11.08.2022.
-//
-
-#ifndef EX00_ZOMBIE_HPP
-#define EX00_ZOMBIE_HPP
-
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 class Zombie {
-
+    std::string name;
+public:
+    void announce(void);
 };
 
 
-#endif //EX00_ZOMBIE_HPP
+#endif //ZOMBIE_HPP
