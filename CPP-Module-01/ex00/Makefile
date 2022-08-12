@@ -25,7 +25,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 			@mkdir -p ${OBJS_DIR}	
 
-${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}  
+${OBJS_DIR}%.o : %.cpp Zombie.hpp Makefile | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
@@ -41,6 +41,7 @@ re			:	fclean all
 
 # Leak Search
 seleak		:
-				@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./${NAME}
+				@valgrind --leak-check=full --show-leak-kinds=all \
+				--leak-resolution=med  --track-origins=yes ./${NAME}
 
 .PHONY		: 	all clean fclean re

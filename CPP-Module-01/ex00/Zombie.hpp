@@ -10,7 +10,6 @@ public:
     ~Zombie();
 private:
     std::string name_;
-
 };
 
 #endif //ZOMBIE_HPP
