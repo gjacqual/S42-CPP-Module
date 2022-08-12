@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	phonebook
+NAME		:=	zombie
 
 # Compilation Parameters
 CXX			:=	c++
@@ -22,7 +22,7 @@ ${NAME}		:	${OBJS}
 				${CXX} ${CXXFLAGS} ${OBJS} -o ${NAME}
 				@echo "\033[1;32mCPP Module is ready\033[0m"
 
-${OBJS_DIR}: 
+${OBJS_DIR}:
 			@mkdir -p ${OBJS_DIR}	
 
 ${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}  
@@ -38,5 +38,9 @@ fclean: 	clean
 				@echo "\033[1;96mCPP Module are Full Cleaned\033[0m"	
 
 re			:	fclean all
+
+# Leak Search
+seleak		:
+				@valgrind --leak-check=full --show-leak-kinds=all --leak-resolution=med  --track-origins=yes ./${NAME}
 
 .PHONY		: 	all clean fclean re
