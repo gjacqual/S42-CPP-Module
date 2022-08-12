@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	unnecessaryViolence
+NAME		:=	replacer
 
 # Compilation Parameters
 CXX			:=	c++
@@ -25,7 +25,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 			@mkdir -p ${OBJS_DIR}	
 
-${OBJS_DIR}%.o : %.cpp Weapon.hpp HumanA.hpp HumanB.hpp Makefile | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
@@ -42,6 +42,6 @@ re			:	fclean all
 # Leak Search
 seleak		:
 				@valgrind --leak-check=full --show-leak-kinds=all \
-				--leak-resolution=med  --track-origins=yes ./${NAME}
+				--leak-resolution=med  --track-origins=yes ./${NAME} file.txt test WWWWW
 
 .PHONY		: 	all clean fclean re
