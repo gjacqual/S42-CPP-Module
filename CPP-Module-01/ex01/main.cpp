@@ -1,24 +1,35 @@
 #include "Zombie.hpp"
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
+Zombie* zombieHorde(int N, std::string name);
 
 int main(void) {
+    std::string names[13] = {"Mitchel First", "Fred", "Ivan", "Vasily", "Peter",
+                             "Charly", "Tom", "Dude", "Cooper", "Hugo", "Kim",
+                             "Molder", "Lucky Guy"};
 
-    // Create a zombie on the stack and let it announce itself
-    Zombie zombieStack("Robert FirstInStack");
-    zombieStack.announce();
+    // Creating a horde of zombies
+    std::cout << "CREATOR: I think I'll create a horde of zombies------------|";
+    std::cout << std::endl;
+    Zombie* zombieArray = zombieHorde(13, "Cannon Fodder");
 
-    // Create a zombie in the heap and let it announce itself
-    Zombie* zombieHeap = newZombie("Karl FirstInHeap");
-    zombieHeap->announce();
+    // Rename the zombies to distinguish them
+    std::cout << "CREATOR: I need to give each zombie a unique name----------|";
+    std::cout << std::endl;
+    for (int i = 0; i < 13; i++) {
+        zombieArray[i].setName(names[i]);
+    }
 
-    // Zombies on the stack are destroyed after the completion of the function
-    randomChump("Frankie SecondInStack");
+    // Starting the roll call
+    std::cout << "CREATOR: My horde of zombies, respond in turn!!!-----------|";
+    std::cout << std::endl;
+    for (int i = 0; i < 13; i++) {
+        zombieArray[i].announce();
+    }
 
-    // Zombies in the heap live until they are forcibly removed
-    delete zombieHeap;
+    // I don't need zombies anymore
+    std::cout << "CREATOR: It's time to Say GOODBYE!!!-----------------------|";
+    std::cout << std::endl;
+    delete[] zombieArray;
 
-    // Robert FirstInStack Robert will be destroyed
     return 0;
 }

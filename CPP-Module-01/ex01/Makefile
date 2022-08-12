@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	ex01
+NAME		:=	zombieHorde
 
 # Compilation Parameters
 CXX			:=	c++

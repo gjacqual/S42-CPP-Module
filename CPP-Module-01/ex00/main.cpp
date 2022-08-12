@@ -6,7 +6,7 @@ void randomChump(std::string name);
 int main(void) {
 
     // Create a zombie on the stack and let it announce itself
-    Zombie zombieStack("Robert FirstInStack");
+    Zombie zombieStack("Bill FirstInStack");
     zombieStack.announce();
 
     // Create a zombie in the heap and let it announce itself
