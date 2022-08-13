@@ -37,6 +37,10 @@ void ReplaceContent::replace() {
             outputFile << std::endl;
         }
     }
+	if (!outputFile.good()) {
+        std::cout << "\033[1;31mError: Writing to the file ended in failure\033[0m" << std::endl;
+        return;
+    }
 
     std::cout << "\033[1;32mThe successful replacement is located in the \033[1;96m"
     << filename_ << "\033[0m" << std::endl;
