@@ -114,7 +114,7 @@ int main(void) {
     // "num--"
     std::cout << "\033[0;32m\"num--\":\033[0m" << " num1=" << num1 << "; "
               << std::endl;
-    std::cout << "\tnum1-- = " << num1++ << std::endl;
+    std::cout << "\tnum1-- = " << num1-- << std::endl;
     std::cout << "\tnum1 = " << num1 << std::endl;
 
     std::cout << "\033[0;32m<max/min methods:>\033[0m" << std::endl;

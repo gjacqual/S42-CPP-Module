@@ -1,138 +1,53 @@
 #include <iostream>
-#include "Fixed.hpp"
+#include "Point.hpp"
 
 int main(void) {
-    std::cout << "\033[0;1;96m****** Subject Example *****\033[0m" << std::endl;
+    std::cout << "\033[0;1;96m*** Binary space partitioning **\033[0m" << std::endl;
 
-    Fixed a;
-    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+    //vertices of a triangle
+    Point a(12.55f, 5.64f);
+    Point b(11.78f, 1.55f);
+    Point c(2.98f, 2.35f);
 
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
-    std::cout << Fixed::max( a, b ) << std::endl;
-    std::cout << "\033[0;1;96m****************************\033[0m" << std::endl;
+    std::cout << "Vertices of a triangle: " << "a: " << a << "b: " << b << "c: "
+              << c << std::endl;
+    //Test Operator=
+    Point point1; // 0.0
+    std::cout << "Init Point: " << point1 << std::endl;
+    Point point2(8.4f, 3.55f);
 
-    std::cout << "\033[0;1;96m********* My Tests *********\033[0m" << std::endl;
-    Fixed num1(21);
-    Fixed const num2(21);
-    Fixed const num3(21.21f);
-    Fixed const num4(21.21f);
-    Fixed num5(100);
-    std::cout << "\033[0;32m<Comparison operators:>\033[0m" << std::endl;
-    // "=="
-    std::cout << "\033[0;32m\"==\":\033[0m" << " num1=" << num1 << "; "
-    << "num2=" << num2  << std::endl;
-    std::string result = (num1 == num2) ?
-            "num1 equals num2" : "num1 is not equal num2";
-    std::cout << "\t" << result << std::endl;
-    // "!="
-    std::cout << "\033[0;32m\"!=\":\033[0m" << " num1=" << num1 << "; "
-              << "num3=" << num3  << std::endl;
-    result = (num1 != num3) ?
-                         "num1 is not equal num3" : "num1 equals num3";
-    std::cout << "\t" << result << std::endl;
-    // "<"
-    std::cout << "\033[0;32m\"<\":\033[0m" << " num1=" << num1 << "; "
-              << "num3=" << num3  << std::endl;
-    result = (num1 < num3) ?
-             "num1 is smaller then num3" : "num3 is smaller then num1";
-    std::cout << "\t" << result << std::endl;
-    // ">"
-    std::cout << "\033[0;32m\">\":\033[0m" << " num1=" << num1 << "; "
-              << "num3=" << num3  << std::endl;
-    result = (num3 > num1) ?
-             "num3 is bigger then num1" : "num1 is bigger then num3";
-    std::cout << "\t" << result << std::endl;
-    // "<="
-    std::cout << "\033[0;32m\"<=\":\033[0m" << " num1=" << num1 << "; "
-              << "num3=" << num3  << "; num4=" << num4 << std::endl;
-    result = (num1 <= num3) ?
-             "num1 is smaller or equals num3" : "num3 is smaller or equals num1";
-    std::cout << "\t" << result << std::endl;
-    result = (num4 <= num3) ?
-             "num4 is smaller or equals num3" : "num3 is smaller or equals num4";
-    std::cout << "\t" << result << std::endl;
-    // ">="
-    std::cout << "\033[0;32m\">=\":\033[0m" << " num1=" << num1 << "; "
-              << "num3=" << num3  << "; num4=" << num4 << std::endl;
-    result = (num1 >= num3) ?
-             "num1 is bigger or equals num3" : "num1 is smaller num3";
-    std::cout << "\t" << result << std::endl;
-    result = (num4 >= num3) ?
-             "num4 is bigger or equals num3" : "num4 is smaller num4";
-    std::cout << "\t" << result << std::endl;
-
-    std::cout << "\033[0;32m<Arithmetic operators:>\033[0m" << std::endl;
-    // "+"
-    std::cout << "\033[0;32m\"+\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num2  << "; num3=" << num3 << std::endl;
-    std::cout << "\tResult: num1 + num2 = " << num1 + num2 << std::endl;
-    std::cout << "\tResult: num1 + num3 = " << num1 + num3 << std::endl;
-    // "-"
-    std::cout << "\033[0;32m\"-\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num2  << "; num3=" << num3 << std::endl;
-    std::cout << "\tResult: num1 - num2 = " << num1 - num2 << std::endl;
-    std::cout << "\tResult: num1 - num3 = " << num1 - num3 << std::endl;
-    // "*"
-    std::cout << "\033[0;32m\"*\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num2  << "; num3=" << num3 << std::endl;
-    std::cout << "\tResult: num1 * num2 = " << num1 * num2 << std::endl;
-    std::cout << "\tResult: num1 * num3 = " << num1 * num3 << std::endl;
-    // "/"
-    Fixed num0(0);
-    std::cout << "\033[0;32m\"/\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num2  << "; num3=" << num3 << "; num0="
-              << num0 << std::endl;
-
-    std::cout << "\tResult: num1 / num2 = " << num1 / num2 << std::endl;
-    std::cout << "\tResult: num1 / num3 = " << num1 / num3 << std::endl;
-    try {
-        std::cout << "\tResult: num1 / ZERO = " << num1 / num0 << std::endl;
-    } catch (std::exception& ex) {
-        std::cout << ex.what() << std::endl;
-    }
-    std::cout << "\033[0;32m<Increment/decrement operators:>\033[0m" << std::endl;
-    // "++num"
-    std::cout << "\033[0;32m\"++num\":\033[0m" << " num1=" << num1 << "; "
-             << std::endl;
-    std::cout << "\t++num1 = " << ++num1 << std::endl;
-    std::cout << "\tnum1 = " << num1 << std::endl;
-    // "num++"
-    std::cout << "\033[0;32m\"num++\":\033[0m" << " num1=" << num1 << "; "
-              << std::endl;
-    std::cout << "\tnum1++ = " << num1++ << std::endl;
-    std::cout << "\tnum1 = " << num1 << std::endl;
-    // "--num"
-    std::cout << "\033[0;32m\"--num\":\033[0m" << " num1=" << num1 << "; "
-              << std::endl;
-    std::cout << "\t--num1 = " << --num1 << std::endl;
-    std::cout << "\tnum1 = " << num1 << std::endl;
-    // "num--"
-    std::cout << "\033[0;32m\"num--\":\033[0m" << " num1=" << num1 << "; "
-              << std::endl;
-    std::cout << "\tnum1-- = " << num1++ << std::endl;
-    std::cout << "\tnum1 = " << num1 << std::endl;
-
-    std::cout << "\033[0;32m<max/min methods:>\033[0m" << std::endl;
-    // "max"
-    std::cout << "\033[0;32m\"max\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num5  << std::endl;
-    std::cout << "\tResult: max(num1, num5) = " << Fixed::max(num1, num5) << std::endl;
-    // "min"
-    std::cout << "\033[0;32m\"min\":\033[0m" << " num1=" << num1 << "; "
-              << "num2=" << num5  << std::endl;
-    std::cout << "\tResult: min(num1, num5) = " << Fixed::min(num1, num5) << std::endl;
-    // "const max"
-    std::cout << "\033[0;32m\"const max\":\033[0m" << " num2=" << num2 << "; "
-              << "num3=" << num3  << std::endl;
-    std::cout << "\tResult: const max(num2, num3) = " << Fixed::max(num2, num3) << std::endl;
-    // "const min"
-    std::cout << "\033[0;32m\"const min\":\033[0m" << " num2=" << num2 << "; "
-              << "num3=" << num3  << std::endl;
-    std::cout << "\tResult: const min(num2, num3) = " << Fixed::min(num2, num3) << std::endl;
+    Point pointOut(2.32, 13.55);
+    Point pointOnVertex(c);
+    point1 = point2;
+    std::cout << "Point inside triangle: " << point1 << "point is inside?" << std::endl;
+    std::string result;
+    result = bsp(a, b, c, point1) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    std::cout << "Point outside triangle: " << pointOut << "point is inside?" << std::endl;
+    result = bsp(a, b, c, pointOut) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    std::cout << "Point on Vertex: " << pointOnVertex << "point is inside?" << std::endl;
+    result = bsp(a, b, c, pointOnVertex) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    std::cout << "\033[0;1;96m*** Check the condition if the point lies on the side **\033[0m" << std::endl;
+    Point aSimple(3.55f, 7.0f);
+    Point bSimple(13.55f, 0.0f);
+    Point cSimple(3.55f, 0.0f);
+    std::cout << "Vertices of a triangle: " << "a: " << aSimple << "b: " << bSimple << "c: "
+              << cSimple << std::endl;
+    Point pointOnSide(3.55f, 3.0f);
+    Point pointOnSidePlus(3.56f, 3.0f);
+    Point pointOnSideMinus(3.54f, 3.0f);
+    std::cout << "Point on the side of triangle: " << pointOnSide << "point is inside?" << std::endl;
+    result = bsp(aSimple, bSimple, cSimple, pointOnSide) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    std::cout << "pointOnSide(x + 0.01): " << pointOnSidePlus << "point is inside?" << std::endl;
+    result = bsp(aSimple, bSimple, cSimple, pointOnSidePlus) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    std::cout << "pointOnSide(x - 0.01): " << pointOnSideMinus << "point is inside?" << std::endl;
+    result = bsp(aSimple, bSimple, cSimple, pointOnSideMinus) ? "Yes" : "No";
+    std::cout << result << std::endl;
+    //Check the results here -  https://planetcalc.com/8108/
+    std::cout << "Check the results here -  \033[0;1;96mhttps://planetcalc.com/8108/\033[0m" << std::endl;
     return 0;
 }

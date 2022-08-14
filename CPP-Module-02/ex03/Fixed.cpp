@@ -87,7 +87,7 @@ Fixed Fixed::operator/(const Fixed &rhs) const {
 }
 
 Fixed &Fixed::operator++() {
-    fixedNumberValue_ += 1 ;
+    fixedNumberValue_ += 1;
     return *this;
 }
 
@@ -105,7 +105,7 @@ Fixed &Fixed::operator--() {
 
 Fixed Fixed::operator--(int) {
     Fixed copy = *this;
-    fixedNumberValue_-= 1;
+    fixedNumberValue_ -= 1;
     return copy;
 }
 
