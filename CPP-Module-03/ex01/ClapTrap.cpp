@@ -84,7 +84,7 @@ void ClapTrap::attack(const std::string &target) {
                   << COLOR_CLEAR << std::endl;
     else {
         --energyPoints_;
-        std::cout << "ClapTrap" << name_ << COLOR_RED << " ATTACKS "
+        std::cout << "ClapTrap " << name_ << COLOR_RED << " ATTACKS "
                   << COLOR_YELLOW << target << COLOR_CLEAR
                   << ", causing " << this->getAttackDamage() << " points of damage!"
                   << std::endl;

@@ -1,5 +1,5 @@
-#ifndef EX00_CLAPTRAP_HPP
-#define EX00_CLAPTRAP_HPP
+#ifndef EX01_CLAPTRAP_HPP
+#define EX01_CLAPTRAP_HPP
 
 #include <iostream>
 
@@ -53,7 +53,7 @@ public:
 
     void beRepaired(unsigned int amount);
 
-private:
+protected:
     std::string name_;
     // health of the ClapTrap
     unsigned int hitPoints_;
@@ -66,4 +66,4 @@ private:
 std::ostream &operator<<(std::ostream &ostream, const ClapTrap &object);
 
 
-#endif //EX00_CLAPTRAP_HPP
+#endif //EX01_CLAPTRAP_HPP

@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	claptrap
+NAME		:=	scavtrap
 # Compilation Parameters
 CXX			:=	c++
 CXXFLAGS		:=	-Wall -Wextra -Werror -MMD -std=c++98 -pedantic
@@ -24,7 +24,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp ScavTrap.hpp | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils

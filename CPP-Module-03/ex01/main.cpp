@@ -1,60 +1,48 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main(void) {
+
     std::cout << "\033[1;96m<<<<<--- Default constructor "
-                 "and destructor test --->>>>>" << COLOR_CLEAR << std::endl;
-    ClapTrap *clapTrapDefault = new ClapTrap();
-    std::cout << *clapTrapDefault;
-    delete clapTrapDefault;
-    std::cout << std::endl;
+                 "and destructor in stack --->>>>>" << COLOR_CLEAR << std::endl;
+    {
+        ScavTrap defaultScavTrap;
+        defaultScavTrap.attack("Brick wall");
+        defaultScavTrap.beRepaired(1);
+        defaultScavTrap.takeDamage(20);
+        std::cout << defaultScavTrap << std::endl;
+    }
+    std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 
-    std::cout << "\033[1;96m<<<<<--- Constructor With Parameters test "
-                 "--->>>>>" << COLOR_CLEAR << std::endl;
-    ClapTrap *clapTrapChuck = new ClapTrap("Chuck");
-    std::cout << *clapTrapChuck << std::endl;
-    ClapTrap clapTrapRocky("Rocky");
-    std::cout << clapTrapRocky << std::endl;
+    std::cout << "\033[1;96m<<<<<--- Copy Constructor Work Test "
+                 "in stack --->>>>>" << COLOR_CLEAR << std::endl;
+    {
+        ScavTrap original("Original");
+        ScavTrap clone(original);
+        clone.attack("Invisible wall");
+        std::cout << clone << std::endl;
+    }
+    std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 
-    // Copy Constructor Test
-    std::cout << "\033[1;96m<<<<<--- Copy Constructor Test "
-                 "--->>>>>" << COLOR_CLEAR << std::endl;
-    ClapTrap clapTrapChuckBro(*clapTrapChuck);
-    clapTrapChuckBro.setName("Bro of Chuck ");
-    std::cout << clapTrapChuckBro << std::endl;
+    std::cout << "\033[1;96m<<<<<--- ClapTrap "
+                 "individuality --->>>>>" << COLOR_CLEAR << std::endl;
+    {
+        ClapTrap clapTrapJohn("John");
+        clapTrapJohn.attack("Brick wall");
+        clapTrapJohn.beRepaired(1);
+        clapTrapJohn.takeDamage(10);
+        std::cout << clapTrapJohn << std::endl;
+    }
+    std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 
-    std::cout << "\033[1;96m<<<<<--- Member Functions Test "
-                 "--->>>>>" << COLOR_CLEAR << std::endl;
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->takeDamage(10);
-    std::cout << *clapTrapChuck << std::endl;
-    clapTrapChuck->beRepaired(4);
-    std::cout << *clapTrapChuck << std::endl;
-    clapTrapChuck->attack("Another Brick wall");
-    // the hit is more than the СlapTrap has health
-    clapTrapChuck->takeDamage(10);
-    std::cout << *clapTrapChuck << std::endl;
-    //Finishing off the fallen СlapTrap
-    clapTrapChuck->takeDamage(10);
-    std::cout << *clapTrapChuck << std::endl;
+    std::cout << "\033[1;96m<<<<<--- Test with object on heap "
+                 " --->>>>>" << COLOR_CLEAR << std::endl;
 
-    std::cout << "\033[1;96m<<<<<--- Will the beaten one be able to attack? "
-                 "--->>>>>" << COLOR_CLEAR << std::endl;
-    clapTrapChuck->attack("Brick wall");
-    std::cout << *clapTrapChuck << std::endl;
+    ScavTrap *scavTrap = new ScavTrap("Bob");
+    std::cout << *scavTrap << std::endl;
 
-    std::cout << "\033[1;96m<<<<<--- Fatigue test "
-                 "--->>>>>" << COLOR_CLEAR << std::endl;
-    clapTrapChuck->beRepaired(4);
-    clapTrapChuck->beRepaired(4);
-    clapTrapChuck->beRepaired(4);
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->attack("Brick wall");
-    clapTrapChuck->beRepaired(1);
-    std::cout << *clapTrapChuck << std::endl;
+    scavTrap->guardGate();
+    delete scavTrap;
+    std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 
-    delete clapTrapChuck;
     return 0;
 }
