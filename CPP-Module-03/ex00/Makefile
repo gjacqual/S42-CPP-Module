@@ -22,17 +22,17 @@ ${NAME}		:	${OBJS}
 				@echo "\033[1;32mCPP Module is ready\033[0m"
 
 ${OBJS_DIR}:
-			@mkdir -p ${OBJS_DIR}	
+				@mkdir -p ${OBJS_DIR}
 
 ${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
-clean:
+clean		:
 				@rm -rf ${OBJS_DIR}
 				@echo "\033[1;96mCPP Module is Cleaned\033[0m"	
 
-fclean: 	clean
+fclean		: 	clean
 				@${RM} ${NAME}
 				@echo "\033[1;96mCPP Module are Full Cleaned\033[0m"	
 

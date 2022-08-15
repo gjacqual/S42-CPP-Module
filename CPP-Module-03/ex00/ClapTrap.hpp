@@ -18,7 +18,9 @@ class ClapTrap {
 public:
     //Constructors
     ClapTrap();
+
     ClapTrap(const std::string &name);
+
     ClapTrap(const ClapTrap &object);
 
     //Operators
@@ -32,28 +34,33 @@ public:
 
     void setName(const std::string &name);
 
-    int getHitPoints() const;
+    unsigned int getHitPoints() const;
 
-    void setHitPoints(int hitPoints);
+    void setHitPoints(unsigned int hitPoints);
 
-    int getEnergyPoints() const;
+    unsigned int getEnergyPoints() const;
 
-    void setEnergyPoints(int energyPoints);
+    void setEnergyPoints(unsigned int energyPoints);
 
-    int getAttackDamage() const;
+    unsigned int getAttackDamage() const;
 
-    void setAttackDamage(int attackDamage);
+    void setAttackDamage(unsigned int attackDamage);
 
     //Methods
-    void attack(const std::string& target);
+    void attack(const std::string &target);
+
     void takeDamage(unsigned int amount);
+
     void beRepaired(unsigned int amount);
 
 private:
     std::string name_;
-    int         hitPoints_; // health of the ClapTrap
-    int         energyPoints_;
-    int         attackDamage_;
+    // health of the ClapTrap
+    unsigned int hitPoints_;
+    // Muscle fatigue
+    unsigned int energyPoints_;
+    // How much damage can it do to the enemy
+    unsigned int attackDamage_;
 };
 
 std::ostream &operator<<(std::ostream &ostream, const ClapTrap &object);
