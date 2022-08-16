@@ -4,16 +4,16 @@
 FragTrap::FragTrap() {
     name_ = "Default";
     hitPoints_ = 100;
-    energyPoints_ = 50;
-    attackDamage_ = 20;
+    energyPoints_ = 100;
+    attackDamage_ = 30;
     std::cout << "FragTrap default has just been " << COLOR_GREEN
               << "created" << COLOR_CLEAR << std::endl;
 }
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name) {
     hitPoints_ = 100;
-    energyPoints_ = 50;
-    attackDamage_ = 20;
+    energyPoints_ = 100;
+    attackDamage_ = 30;
     std::cout << "FragTrap has just been " << COLOR_GREEN
               << "created" << COLOR_CLEAR << " and named "
               << COLOR_YELLOW << name_ << COLOR_CLEAR << std::endl;
@@ -32,11 +32,12 @@ FragTrap::~FragTrap() {
 
 //Methods
 void FragTrap::highFivesGuys(void) {
-
+    std::cout << COLOR_SPECIAL << "High Fives Guys!" << COLOR_CLEAR << std::endl;
 }
 
 //Operators
 FragTrap &FragTrap::operator=(const FragTrap &assign) {
+    std::cout << "FragTrap Operator= called" << std::endl;
     if (this != &assign) {
         name_ = assign.name_;
         hitPoints_ = assign.hitPoints_;

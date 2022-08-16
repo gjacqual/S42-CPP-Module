@@ -9,6 +9,7 @@ int main(void) {
         defaultFragTrap.attack("Brick wall");
         defaultFragTrap.beRepaired(1);
         defaultFragTrap.takeDamage(20);
+        defaultFragTrap.highFivesGuys();
         std::cout << defaultFragTrap << std::endl;
     }
     std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
@@ -19,6 +20,7 @@ int main(void) {
         FragTrap original("Original");
         FragTrap clone(original);
         clone.attack("Invisible wall");
+        clone.highFivesGuys();
         std::cout << clone << std::endl;
     }
     std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
@@ -30,7 +32,7 @@ int main(void) {
     std::cout << *fragTrap << std::endl;
 
     fragTrap->highFivesGuys();
-    delete FragTrap;
+    delete fragTrap;
     std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 
     return 0;

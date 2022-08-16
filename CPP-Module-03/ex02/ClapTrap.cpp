@@ -23,6 +23,7 @@ ClapTrap::ClapTrap(const ClapTrap &object) {
 
 //Operators
 ClapTrap &ClapTrap::operator=(const ClapTrap &assign) {
+    std::cout << "ClapTrap Operator= called" << std::endl;
     if (this != &assign) {
         name_ = assign.name_;
         hitPoints_ = assign.hitPoints_;

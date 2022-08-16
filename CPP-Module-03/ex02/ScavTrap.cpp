@@ -58,6 +58,7 @@ void ScavTrap::attack(const std::string &target) {
 
 //Operators
 ScavTrap &ScavTrap::operator=(const ScavTrap &assign) {
+    std::cout << "FragTrap Operator= called" << std::endl;
     if (this != &assign) {
         name_ = assign.name_;
         hitPoints_ = assign.hitPoints_;
