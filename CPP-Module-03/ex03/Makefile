@@ -2,7 +2,7 @@
 NAME		:=	diamondtrap
 # Compilation Parameters
 CXX			:=	c++
-CXXFLAGS		:=	-Wall -Wextra -Werror -MMD -std=c++98 -pedantic
+CXXFLAGS		:=	-Wall -Wextra -Werror  -MMD -std=c++98
 RM			:=	rm -f
 
 # source files
@@ -24,7 +24,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
