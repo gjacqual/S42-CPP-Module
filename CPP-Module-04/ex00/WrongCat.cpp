@@ -1,17 +1,17 @@
 #include "WrongCat.hpp"
 
-void WrongCat::makeSound() const{
+void WrongCat::makeSound() const {
     std::cout << "The WRONG Cat says " << COLOR_YELLOW << "KuKaReKu!!!"
               << COLOR_CLEAR << std::endl;
 }
 
 WrongCat::WrongCat() {
     type_ = "Wrong Cat";
-    std::cout  << type_ <<  COLOR_GREEN << " created in WRONG Cat Constructor"
-               << COLOR_CLEAR << std::endl;
+    std::cout << type_ << COLOR_GREEN << " created in WRONG Cat Constructor"
+              << COLOR_CLEAR << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &copy)  : WrongAnimal(copy) {
+WrongCat::WrongCat(const WrongCat &copy) : WrongAnimal(copy) {
     type_ = copy.type_;
     std::cout << "WRONG Cat Copy Constructor called." << std::endl;
 }

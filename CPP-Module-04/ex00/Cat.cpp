@@ -1,18 +1,18 @@
 
 #include "Cat.hpp"
 
-void Cat::makeSound() const{
+void Cat::makeSound() const {
     std::cout << "The Cat says " << COLOR_YELLOW << "Meow!"
               << COLOR_CLEAR << std::endl;
 }
 
 Cat::Cat() {
     type_ = "Cat";
-    std::cout  << type_ <<  COLOR_GREEN << " created in Cat Constructor"
-               << COLOR_CLEAR << std::endl;
+    std::cout << type_ << COLOR_GREEN << " created in Cat Constructor"
+              << COLOR_CLEAR << std::endl;
 }
 
-Cat::Cat(const Cat &copy)  : Animal(copy) {
+Cat::Cat(const Cat &copy) : Animal(copy) {
     type_ = copy.type_;
     std::cout << "Cat Copy Constructor called." << std::endl;
 }

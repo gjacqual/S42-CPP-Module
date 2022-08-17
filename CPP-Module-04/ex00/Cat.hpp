@@ -4,18 +4,19 @@
 
 #include "Animal.hpp"
 
-class Cat: public Animal {
+class Cat : public Animal {
 
 public:
     // Constructors
     Cat();
+
     Cat(const Cat &copy);
 
     // Destructor
     ~Cat();
 
     // Operators
-    Cat & operator=(const Cat &assign);
+    Cat &operator=(const Cat &assign);
 
     // Getters / Setters
     void makeSound() const;

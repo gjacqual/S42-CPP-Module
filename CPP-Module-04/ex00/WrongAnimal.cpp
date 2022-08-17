@@ -1,13 +1,13 @@
 
 #include "WrongAnimal.hpp"
 
-void WrongAnimal::makeSound() const{
+void WrongAnimal::makeSound() const {
     std::cout << "WRONG Animal made a " << COLOR_PURPLE << "WRONG sound!"
               << COLOR_CLEAR << std::endl;
 }
 
 WrongAnimal::WrongAnimal() : type_("WRONG Animal") {
-    std::cout << "Default Wrong " << type_ <<  COLOR_GREEN << " created"
+    std::cout << "Default Wrong " << type_ << COLOR_GREEN << " created"
               << COLOR_CLEAR << std::endl;
 }
 
