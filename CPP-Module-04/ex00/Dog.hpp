@@ -10,7 +10,6 @@ public:
     // Constructors
     Dog();
     Dog(const Dog &copy);
-    Dog(std::string type);
 
     // Destructor
     ~Dog();
@@ -20,10 +19,8 @@ public:
 
     // Getters / Setters
 
-    void makeSound();
-
+    void makeSound() const;
 
 };
-
 
 #endif //EX00_DOG_HPP
