@@ -24,7 +24,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile Animal.hpp Dog.hpp Cat.hpp| ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp| ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
