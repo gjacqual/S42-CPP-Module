@@ -32,6 +32,7 @@
 *.app
 
 .vscode/*
+*/*/.vscode
 */*/.idea/*
 */.idea/*
 */*/bsp

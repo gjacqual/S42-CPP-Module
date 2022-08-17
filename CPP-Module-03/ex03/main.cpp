@@ -37,6 +37,7 @@ int main(void) {
         DiamondTrap clone(original);
         clone.attack("Invisible wall");
         clone.highFivesGuys();
+        std::cout << original << std::endl;
     }
     std::cout << "\033[1;96m<<<<<---- End Test ---->>>>>" << COLOR_CLEAR << std::endl;
 

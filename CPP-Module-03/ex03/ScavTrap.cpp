@@ -16,9 +16,9 @@ ScavTrap::ScavTrap() {
 }
 
 ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name) {
-    hitPoints_ = 100;
-    energyPoints_ = 50;
-    attackDamage_ = 20;
+    ClapTrap::hitPoints_ = 100;
+    ClapTrap::energyPoints_ = 50;
+    ClapTrap::attackDamage_ = 20;
     std::cout << "ScavTrap has just been " << COLOR_GREEN
               << "created" << COLOR_CLEAR << " and named "
               << COLOR_YELLOW << name_ << COLOR_CLEAR << std::endl;

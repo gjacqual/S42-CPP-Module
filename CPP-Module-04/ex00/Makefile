@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	diamondtrap
+NAME		:=	polymorphism
 # Compilation Parameters
 CXX			:=	c++
 CXXFLAGS		:=	-Wall -Wextra -Werror  -MMD -std=c++98 -g
@@ -24,7 +24,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils

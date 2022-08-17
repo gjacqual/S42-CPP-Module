@@ -3,17 +3,16 @@
 //Constructors
 FragTrap::FragTrap() {
     name_ = "Default";
-    hitPoints_ = 100;
-    energyPoints_ = 100;
-    attackDamage_ = 30;
+    ClapTrap::hitPoints_ = 100;
+    ClapTrap::energyPoints_ = 100;
+    ClapTrap::attackDamage_ = 30;
     std::cout << "FragTrap default has just been " << COLOR_GREEN
               << "created" << COLOR_CLEAR << std::endl;
 }
 
 FragTrap::FragTrap(const std::string &name) : ClapTrap(name) {
-    hitPoints_ = 100;
-    energyPoints_ = 100;
-    attackDamage_ = 30;
+    ClapTrap::energyPoints_ = 100;
+    ClapTrap::attackDamage_ = 30;
     std::cout << "FragTrap has just been " << COLOR_GREEN
               << "created" << COLOR_CLEAR << " and named "
               << COLOR_YELLOW << name_ << COLOR_CLEAR << std::endl;
