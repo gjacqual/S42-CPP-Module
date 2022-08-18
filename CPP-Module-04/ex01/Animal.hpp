@@ -1,6 +1,5 @@
-
-#ifndef EX00_ANIMAL_HPP
-#define EX00_ANIMAL_HPP
+#ifndef EX01_ANIMAL_HPP
+#define EX01_ANIMAL_HPP
 
 #include <iostream>
 
@@ -35,4 +34,4 @@ protected:
     std::string type_;
 };
 
-#endif //EX00_ANIMAL_HPP
+#endif //EX01_ANIMAL_HPP
