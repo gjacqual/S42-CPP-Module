@@ -11,6 +11,7 @@
 #define COLOR_GREEN     "\033[0;32m"
 #define COLOR_YELLOW    "\033[0;33m"
 #define COLOR_PURPLE    "\033[0;35m"
+#define COLOR_BLUE      "\033[0;34m"
 
 class Animal {
 public:

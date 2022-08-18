@@ -20,7 +20,7 @@ const std::string &Animal::getType() const {
 }
 
 Animal::~Animal() {
-    std::cout << type_ << COLOR_RED << " destroyed"
+    std::cout << type_ << COLOR_RED << " destroyed like Animal"
               << COLOR_CLEAR << std::endl;
 }
 

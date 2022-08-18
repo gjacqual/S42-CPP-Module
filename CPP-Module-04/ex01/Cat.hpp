@@ -1,4 +1,3 @@
-
 #ifndef EX01_CAT_HPP
 #define EX01_CAT_HPP
 
@@ -14,7 +13,7 @@ public:
     Cat(const Cat &copy);
 
     // Destructor
-    ~Cat();
+    virtual ~Cat();
 
     // Operators
     Cat &operator=(const Cat &assign);
@@ -22,8 +21,15 @@ public:
     // Getters / Setters
     void makeSound() const;
 
+    //Member functions
+    const std::string &getIdea(int i) const;
+
+    void setIdea(int i, std::string const &idea);
+
+
+
 private:
-    Brain *brain;
+    Brain *brain_;
 };
 
 #endif //EX01_CAT_HPP

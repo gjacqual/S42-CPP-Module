@@ -1,4 +1,3 @@
-
 #ifndef EX01_DOG_HPP
 #define EX01_DOG_HPP
 
@@ -14,7 +13,7 @@ public:
     Dog(const Dog &copy);
 
     // Destructor
-    ~Dog();
+    virtual ~Dog();
 
     // Operators
     Dog &operator=(const Dog &assign);
@@ -23,8 +22,13 @@ public:
 
     void makeSound() const;
 
+    //Member functions
+    const std::string &getIdea(int i) const;
+
+    void setIdea(int i, std::string const &idea);
+
 private:
-    Brain *brain;
+    Brain *brain_;
 
 };
 
