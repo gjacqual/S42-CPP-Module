@@ -32,7 +32,7 @@ int main() {
                  "when used as a wrongCat"
               << COLOR_CLEAR << std::endl;
     // inheritance_cast between WrongAnimal and WrongCat;
-    const WrongCat wrongCat2 = (const WrongCat &) *wrongCat;
+    const WrongCat wrongCat2 = dynamic_cast<const WrongCat &>(*wrongCat);
     std::cout << wrongCat2.getType() << " " << std::endl;
     wrongCat2.makeSound();
 
