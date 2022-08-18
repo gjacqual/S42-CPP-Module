@@ -28,12 +28,13 @@ Cat::~Cat() {
 Cat &Cat::operator=(const Cat &assign) {
     std::cout << "Cat Assigment Operator called." << std::endl;
     if (this != &assign) {
-//        delete brain_;
+        delete brain_;
         type_ = assign.type_;
         brain_ = new Brain(*assign.brain_);
     }
     return *this;
 }
+
 const std::string &Cat::getIdea(int i) const {
     return brain_->getIdea(i);
 }

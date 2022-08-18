@@ -24,6 +24,7 @@ public:
 
     //Getters / Setters
     const std::string &getIdea(int i) const;
+
     void setIdea(int i, std::string const &idea);
 
 private:
