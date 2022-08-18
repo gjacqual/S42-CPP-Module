@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	brain2
+NAME		:=	abstract
 # Compilation Parameters
 CXX			:=	c++
 CXXFLAGS		:=	-Wall -Wextra -Werror  -MMD -std=c++98
