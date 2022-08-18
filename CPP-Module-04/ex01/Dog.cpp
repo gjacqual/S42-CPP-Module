@@ -8,6 +8,7 @@ void Dog::makeSound() const {
 
 Dog::Dog() {
     type_ = "Dog";
+
     std::cout  << type_ <<  COLOR_GREEN << " created in Dog Constructor"
               << COLOR_CLEAR << std::endl;
 }

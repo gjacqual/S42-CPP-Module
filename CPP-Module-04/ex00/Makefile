@@ -2,7 +2,7 @@
 NAME		:=	polymorphism
 # Compilation Parameters
 CXX			:=	c++
-CXXFLAGS		:=	-Wall -Wextra -Werror  -MMD -std=c++98 -g
+CXXFLAGS		:=	-Wall -Wextra -Werror  -MMD -std=c++98
 RM			:=	rm -f
 
 # source files

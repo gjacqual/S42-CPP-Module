@@ -1,8 +1,9 @@
 
-#ifndef EX00_CAT_HPP
-#define EX00_CAT_HPP
+#ifndef EX01_CAT_HPP
+#define EX01_CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal {
 
@@ -20,7 +21,9 @@ public:
 
     // Getters / Setters
     void makeSound() const;
+
+private:
+    Brain *brain;
 };
 
-
-#endif //EX00_CAT_HPP
+#endif //EX01_CAT_HPP
