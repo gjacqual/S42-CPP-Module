@@ -29,7 +29,8 @@ public:
     // Getters / Setters
     const std::string &getType() const;
 
-    virtual void makeSound() const;
+    // pure virtual function
+    virtual void makeSound() const = 0;
 
 protected:
     std::string type_;

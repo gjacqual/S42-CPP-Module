@@ -1,11 +1,6 @@
 
 #include "Animal.hpp"
 
-void Animal::makeSound() const {
-    std::cout << "The Animal made a " << COLOR_YELLOW << "sound!"
-              << COLOR_CLEAR << std::endl;
-}
-
 Animal::Animal() : type_("Animal") {
     std::cout << "Default " << type_ << COLOR_GREEN << " created"
               << COLOR_CLEAR << std::endl;

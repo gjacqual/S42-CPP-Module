@@ -6,17 +6,17 @@
 
 int main() {
 
-    // *****************************Base Test*********************************//
-    std::cout << "\033[1;96m<<<<<--- Base Subject Test "
+    // *********************** Abstract Class Test ***************************//
+    std::cout << "\033[1;96m<<<<<--- Abstract Class Test "
               << COLOR_CLEAR << std::endl;
-    const Animal *jDog = new Dog();
-    const Animal *iCat = new Cat();
-
-    std::cout << COLOR_YELLOW << "<Destructors order> "
+    std::cout << "\033[1;96m<<<<<--- Uncomment to check the Animal class "
               << COLOR_CLEAR << std::endl;
-    delete jDog; //should not create a leak
-    delete iCat;
-    std::cout << "\033[1;96m<<<<<--- End of Base Test "
+    // start comment
+//    Animal test;
+//    Animal *test2 = new Animal();
+//    delete test2;
+    // end comment
+    std::cout << "\033[1;96m<<<<<--- End of Test "
               << COLOR_CLEAR << std::endl;
     std::cout << std::endl;
     // ******************** Animal  objects Array Test  **********************//
