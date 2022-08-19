@@ -94,15 +94,21 @@ int main() {
             std::cout << "bureaucrat(\"Boris\", 40) -VS- firstForm(\"Doc №21\", 39, 150) : ";
             firstForm.beSigned(bureaucrat);
             std::cout << COLOR_GREEN << "After status: " << COLOR_CLEAR << firstForm << std::endl;
-            std::cout << COLOR_YELLOW << "<Requesting a result from officer " << bureaucrat.getName() << COLOR_CLEAR
-                      << std::endl;
+            // These next lines will not be executed due to an exception being triggered
+            std::cout << COLOR_YELLOW << "<Requesting a result from officer "
+                      << bureaucrat.getName() << COLOR_CLEAR << std::endl;
+            bureaucrat.signForm(firstForm);
         } catch (std::exception &e) {
             std::cerr << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
         }
+        std::cout << COLOR_YELLOW << "<Requesting a result from officer "
+                  << bureaucrat.getName() << COLOR_CLEAR << std::endl;
+        bureaucrat.signForm(firstForm);
         std::cout << COLOR_YELLOW << "<But Then Boris was promoted> " << COLOR_CLEAR << std::endl;
         try {
             bureaucrat.incrementGrade();
             std::cout << bureaucrat << std::endl;
+            std::cout << COLOR_YELLOW << "<try to sign form> " << COLOR_CLEAR << std::endl;
             firstForm.beSigned(bureaucrat);
             bureaucrat.signForm(firstForm);
         } catch (std::exception &e) {

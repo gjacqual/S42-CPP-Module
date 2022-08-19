@@ -58,9 +58,9 @@ void Bureaucrat::decrementGrade() {
 
 void Bureaucrat::signForm(Form &form) {
     if (form.getSignStatus())
-        std::cout << _name << " signed " << form << std::endl;
+        std::cout << _name << COLOR_GREEN << " signed " << COLOR_CLEAR << form << std::endl;
     else
-        std::cout << _name << " couldn’t sign " << form
+        std::cout << _name << COLOR_RED << " couldn’t sign " << COLOR_CLEAR << form
                   << " because he doesn't have the authority" << std::endl;
 
 }
