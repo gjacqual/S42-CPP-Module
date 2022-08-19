@@ -1,5 +1,5 @@
-#ifndef EX01_FORM_HPP
-#define EX01_FORM_HPP
+#ifndef EX02_FORM_HPP
+#define EX02_FORM_HPP
 
 #include <iostream>
 #include <string>
@@ -54,4 +54,4 @@ private:
 //Overload of the insertion («)
 std::ostream &operator<<(std::ostream &os, const Form &form);
 
-#endif //EX01_FORM_HPP
+#endif //EX02_FORM_HPP
