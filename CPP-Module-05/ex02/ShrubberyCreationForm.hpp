@@ -3,13 +3,15 @@
 
 #include <iostream>
 #include <string>
+# include <fstream>
+#include "Bureaucrat.hpp"
 
-
-class ShrubberyCreationForm {
+class ShrubberyCreationForm : public Form {
 public:
-
     // Constructors
     ShrubberyCreationForm();
+
+    ShrubberyCreationForm(std::string target);
 
     ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 
@@ -19,13 +21,29 @@ public:
     // Operators
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &assign);
 
-    // Getters / Setters
-
     //Member functions
 
-private:
-    //data
-};
+    void execute(Bureaucrat const &executor) const;
 
+    class GradeTooHighException : public std::exception {
+        const char *what() const throw();
+    };
+
+    class GradeTooLowException : public std::exception {
+        const char *what() const throw();
+    };
+
+    class FileNotOpenException : public std::exception {
+        const char *what() const throw();
+    };
+    class FileNotWriteException : public std::exception {
+        const char *what() const throw();
+    };
+
+
+private:
+    const std::string _target;
+
+};
 
 #endif //EX02_SHRUBBERYCREATIONFORM_HPP
