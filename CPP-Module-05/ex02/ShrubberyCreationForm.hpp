@@ -25,6 +25,8 @@ public:
 
     void execute(Bureaucrat const &executor) const;
 
+    const std::string &getTarget() const;
+
     class GradeTooHighException : public std::exception {
         const char *what() const throw();
     };

@@ -56,13 +56,20 @@ void Form::beSigned(Bureaucrat &bureaucrat) {
         throw GradeTooLowException();
 }
 
+void Form::checkRequirements(const Bureaucrat &executor) const {
+    if (!_signed)
+        throw FormNotSignedException();
+    if (executor.getGrade() > _gradeToExecute)
+        throw GradeTooHighException();
+}
+
 
 //Overload of the insertion («)
 std::ostream &operator<<(std::ostream &os, const Form &form) {
-    os << "Form: " << form.getName() << ", Signed: "
-       << (form.getSignStatus() ? "Yes" : "No") << ", required grade to sign: "
-            << form.getGradeToSign()
-            << ", required grade to execute: " << form.getGradeToExecute();
+    os << "Form: " << form.getName() << ", Target:" << form.getTarget()
+       << ", Signed: " << (form.getSignStatus() ? "Yes" : "No")
+       << ", required grade to sign: " << form.getGradeToSign()
+       << ", required grade to execute: " << form.getGradeToExecute();
     return os;
 }
 
@@ -72,4 +79,8 @@ const char *Form::GradeTooHighException::what() const throw() {
 
 const char *Form::GradeTooLowException::what() const throw() {
     return ("Form Grade Too Low.");
+}
+
+const char *Form::FormNotSignedException::what() const throw() {
+    return ("Exception: The form is not signed.");
 }

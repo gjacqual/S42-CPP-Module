@@ -33,14 +33,26 @@ public:
 
     int getGradeToExecute() const;
 
+    virtual const std::string &getTarget() const = 0;
+
     //Member functions
     void beSigned(Bureaucrat &bureaucrat);
 
+    virtual void execute(Bureaucrat const &executor) const = 0;
+
+    void checkRequirements(const Bureaucrat &executor) const;
+
+
+    //Exceptions
     class GradeTooHighException : public std::exception {
         const char *what() const throw();
     };
 
     class GradeTooLowException : public std::exception {
+        const char *what() const throw();
+    };
+
+    class FormNotSignedException : public std::exception {
         const char *what() const throw();
     };
 

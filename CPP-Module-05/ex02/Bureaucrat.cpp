@@ -57,12 +57,27 @@ void Bureaucrat::decrementGrade() {
 }
 
 void Bureaucrat::signForm(Form &form) {
-    if (form.getSignStatus())
-        std::cout << _name << COLOR_GREEN << " signed " << COLOR_CLEAR << form << std::endl;
-    else
-        std::cout << _name << COLOR_RED << " couldn’t sign " << COLOR_CLEAR << form
-                  << " because he doesn't have the authority" << std::endl;
+    try {
+        form.beSigned(*this);
+        std::cout << _name << COLOR_GREEN << " signed " << COLOR_CLEAR
+                  << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << _name << COLOR_RED << " couldn’t sign " << COLOR_CLEAR
+                  << form.getName() << " because "
+                  << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
+    }
+}
 
+void Bureaucrat::executeForm(const Form &form) const {
+    try {
+        form.execute(*this);
+        std::cout << _name << COLOR_GREEN << " execute " << COLOR_CLEAR
+                  << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << _name << COLOR_RED << " cannot execute " << COLOR_CLEAR
+                  << form.getName() << " because "
+                  << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
+    }
 }
 
 
@@ -76,6 +91,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
-    os << bureaucrat.getName() << ", bureaucrat grade: " << bureaucrat.getGrade() << std::endl;
+    os << bureaucrat.getName() << ", bureaucrat grade: "
+       << bureaucrat.getGrade() << std::endl;
     return os;
 }

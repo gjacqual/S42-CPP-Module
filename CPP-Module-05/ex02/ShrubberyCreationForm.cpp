@@ -9,21 +9,24 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
         _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) :
-        Form(copy) {
-}
+        Form(copy), _target(copy._target){}
 
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 // Operators
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &assign) {
-    Form::operator=(assign);
-//    _target = assign._target;
+    if (this != &assign) {
+        Form::operator=(assign);
+        const_cast<std::string &>(_target) = assign._target;
+    }
     return *this;
 }
 
+//Member functions
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 
+    checkRequirements(executor);
     std::ofstream outputFile;
     std::string fileOutName = _target + "_shrubbery";
     outputFile.open(fileOutName.c_str());
@@ -39,22 +42,24 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
                          "   `&%\\ ` /%&'    |.|        \\ '|8'\n"
                          "       |o|        | |         | |\n"
                          "       |.|        | |         | |\n"
-                         "jgs \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_"
+                         "jgs \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n"
                          "source: https://ascii.co.uk/art/tree";
     if (!outputFile.good()) {
         throw ShrubberyCreationForm::FileNotWriteException();
     }
-    std::cout << "\033[1;32mThe successful writing ASCII trees is located in the \033[1;96m"
-              << fileOutName << "\033[0m" << std::endl;
+//    std::cout << "\033[1;32mThe successful writing ASCII trees is located in the \033[1;96m"
+//              << fileOutName << "\033[0m" << std::endl;
     outputFile << shrubs;
     outputFile.close();
 }
 
-
-
 // Getters / Setters
 
-//Member functions
+const std::string &ShrubberyCreationForm::getTarget() const {
+    return _target;
+}
+
+
 const char *ShrubberyCreationForm::FileNotOpenException::what() const throw() {
     return ("Exception: File Not Open");
 }
