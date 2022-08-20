@@ -67,7 +67,3 @@ const char *ShrubberyCreationForm::FileNotOpenException::what() const throw() {
 const char *ShrubberyCreationForm::FileNotWriteException::what() const throw() {
     return ("Exception: Writing to the file ended in failure");
 }
-
-const char *ShrubberyCreationForm::GradeTooLowException::what() const throw() {
-    return ("Exception: Grade of Bureaucrat is Too Low execute this.");
-}

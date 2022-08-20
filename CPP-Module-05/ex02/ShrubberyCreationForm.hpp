@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-# include <fstream>
+#include <fstream>
 #include "Bureaucrat.hpp"
 
 class ShrubberyCreationForm : public Form {
@@ -11,7 +11,7 @@ public:
     // Constructors
     ShrubberyCreationForm();
 
-    ShrubberyCreationForm(std::string target);
+    explicit ShrubberyCreationForm(std::string target);
 
     ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 
@@ -26,14 +26,6 @@ public:
     void execute(Bureaucrat const &executor) const;
 
     const std::string &getTarget() const;
-
-    class GradeTooHighException : public std::exception {
-        const char *what() const throw();
-    };
-
-    class GradeTooLowException : public std::exception {
-        const char *what() const throw();
-    };
 
     class FileNotOpenException : public std::exception {
         const char *what() const throw();
