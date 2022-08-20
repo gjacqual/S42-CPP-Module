@@ -9,7 +9,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) :
         _target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) :
-        Form(copy), _target(copy._target){}
+        Form(copy), _target(copy._target) {}
 
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
@@ -33,7 +33,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
     if (outputFile.fail()) {
         throw ShrubberyCreationForm::FileNotOpenException();
     }
-    std::string shrubs =  "              ,@@@@@@@,\n"
+    std::string shrubs = "              ,@@@@@@@,\n"
                          "       ,,,.   ,@@@@@@/@@,  .oo8888o.\n"
                          "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n"
                          "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n"

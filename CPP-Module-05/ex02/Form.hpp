@@ -6,6 +6,11 @@
 
 #include "Bureaucrat.hpp"
 
+#define COLOR_CLEAR     "\033[0m"
+#define COLOR_RED       "\033[1;31m"
+#define COLOR_GREEN     "\033[0;32m"
+#define COLOR_YELLOW    "\033[0;33m"
+
 class Bureaucrat;
 
 class Form {

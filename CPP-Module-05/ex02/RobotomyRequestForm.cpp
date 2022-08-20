@@ -34,9 +34,9 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const {
     int randomNumber = rand() % 2;
     if (randomNumber) {
 
-    std::cout << COLOR_GREEN << _target
-              << " has been robotomized successfully 50% of the time."
-              << COLOR_CLEAR << std::endl;
+        std::cout << COLOR_GREEN << _target
+                  << " has been robotomized successfully 50% of the time."
+                  << COLOR_CLEAR << std::endl;
     } else {
         std::cout << COLOR_RED
                   << " The robotomy of " << _target << " is failed!."

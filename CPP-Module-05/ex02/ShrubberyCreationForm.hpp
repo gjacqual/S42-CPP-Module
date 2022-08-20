@@ -30,6 +30,7 @@ public:
     class FileNotOpenException : public std::exception {
         const char *what() const throw();
     };
+
     class FileNotWriteException : public std::exception {
         const char *what() const throw();
     };

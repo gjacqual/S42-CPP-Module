@@ -2,6 +2,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main() {
     // **************************** Test 0 ***********************************//
@@ -10,7 +11,7 @@ int main() {
     {
         ShrubberyCreationForm testForm;
         ShrubberyCreationForm copyForm("test");
-        std::cout << "Before: " << std::endl;;
+        std::cout << "Before: " << std::endl;
         std::cout << testForm << std::endl;
         std::cout << copyForm << std::endl;
 
@@ -19,7 +20,7 @@ int main() {
         std::cout << testForm << std::endl;
         std::cout << copyForm << std::endl;
 
-        std::cout << "Copy Constructor: " << std::endl;;
+        std::cout << "Copy Constructor: " << std::endl;
 
         ShrubberyCreationForm secondForm(testForm);
         std::cout << secondForm << std::endl;
@@ -47,7 +48,7 @@ int main() {
 
     }
 
-   // **************************** Test 2 ***********************************//
+    // **************************** Test 2 ***********************************//
     std::cout << COLOR_GREEN << "<<<-Test1: Unsuccessful writing ASCII trees ->>>"
               << COLOR_CLEAR << std::endl;
     {
@@ -96,8 +97,10 @@ int main() {
 
     }
     // **************************** Test 3 ***********************************//
-    std::cout << COLOR_GREEN << "<<<-Test3: RobotomyRequest ->>>"
+    std::cout << COLOR_GREEN << "<<<-Test3: Robotomy Request ->>>"
               << COLOR_CLEAR << std::endl;
+    std::cout << "The chances of a successful lobotomy are 50%. "
+                 "make several attempts to compare the results" << std::endl;
     {
         Bureaucrat bender("Bender", 71);
         std::cout << bender << std::endl;
@@ -123,7 +126,39 @@ int main() {
         } catch (std::exception &e) {
             std::cerr << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
         }
-
         std::cout << std::endl;
+    }
+    // **************************** Test 4 ***********************************//
+    std::cout << COLOR_GREEN << "<<<-Test4: Presidential Pardon ->>>"
+              << COLOR_CLEAR << std::endl;
+    {
+        try {
+            Bureaucrat bob("Bob", 25);
+            std::cout << bob << std::endl;
+            PresidentialPardonForm pardonForm("Arthur");
+            std::cout << pardonForm << std::endl;
+
+            bob.signForm(pardonForm);
+            std::cout << pardonForm << std::endl;
+            bob.executeForm(pardonForm);
+        } catch (std::exception &e) {
+            std::cerr << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
+        }
+        try {
+            Bureaucrat bob("Bob", 25);
+            std::cout << bob << std::endl;
+            Bureaucrat prosser("Prosser", 5);
+            std::cout << prosser << std::endl;
+
+
+            PresidentialPardonForm pardonForm("Arthur");
+            std::cout << pardonForm << std::endl;
+
+            bob.signForm(pardonForm);
+            std::cout << pardonForm << std::endl;
+            prosser.executeForm(pardonForm);
+        } catch (std::exception &e) {
+            std::cerr << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
+        }
     }
 }
