@@ -27,7 +27,7 @@ public:
 
     class FormKindNotFoundException : public std::exception {
     public:
-        const char *what(void) const throw();
+        const char *what() const throw();
     };
 
 };

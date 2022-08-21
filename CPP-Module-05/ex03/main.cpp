@@ -1,8 +1,5 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
 int main() {
@@ -91,8 +88,5 @@ int main() {
         } catch (std::exception &e) {
             std::cerr << COLOR_RED << e.what() << COLOR_CLEAR << std::endl;
         }
-
     }
-
-
 }

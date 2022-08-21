@@ -28,7 +28,7 @@ void PresidentialPardonForm::execute(const Bureaucrat &executor) const {
 
     checkRequirements(executor);
     std::cout << COLOR_YELLOW << _target
-    << " has been pardoned by Zaphod Beeblebrox!" << COLOR_CLEAR <<  std::endl;
+              << " has been pardoned by Zaphod Beeblebrox!" << COLOR_CLEAR << std::endl;
 }
 
 // Getters / Setters

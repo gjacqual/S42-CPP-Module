@@ -13,11 +13,10 @@ Intern::Intern(const Intern &copy) {
 Intern::~Intern() {}
 
 // Operators
-Intern &Intern::operator=(const Intern &assign) {
+Intern &Intern::operator=(const Intern &) {
 
     std::cout << "Assigment operator called of Intern" << std::endl;
-    if (this != &assign)
-        *this = assign;
+//    (void) assign;
     return *this;
 }
 
@@ -52,6 +51,6 @@ Form *Intern::makeForm(std::string formName, std::string formTarget) {
     }
 }
 
-const char *Intern::FormKindNotFoundException::what(void) const throw() {
+const char *Intern::FormKindNotFoundException::what() const throw() {
     return ("Exception: Form kind not found");
 }
