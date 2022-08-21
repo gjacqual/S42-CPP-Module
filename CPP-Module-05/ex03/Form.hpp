@@ -1,5 +1,5 @@
-#ifndef EX02_FORM_HPP
-#define EX02_FORM_HPP
+#ifndef EX03_FORM_HPP
+#define EX03_FORM_HPP
 
 #include <iostream>
 #include <string>
@@ -24,7 +24,7 @@ public:
     Form(const Form &copy);
 
     // Destructor
-    ~Form();
+    virtual ~Form();
 
     // Operators
     Form &operator=(const Form &assign);
@@ -71,4 +71,4 @@ private:
 //Overload of the insertion («)
 std::ostream &operator<<(std::ostream &os, const Form &form);
 
-#endif //EX02_FORM_HPP
+#endif //EX03_FORM_HPP

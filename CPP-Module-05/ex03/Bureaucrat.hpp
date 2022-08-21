@@ -1,5 +1,5 @@
-#ifndef EX02_BUREAUCRAT_HPP
-#define EX02_BUREAUCRAT_HPP
+#ifndef EX03_BUREAUCRAT_HPP
+#define EX03_BUREAUCRAT_HPP
 
 # include <iostream>
 # include <string>
@@ -58,4 +58,4 @@ private:
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
-#endif //EX02_BUREAUCRAT_HPP
+#endif //EX03_BUREAUCRAT_HPP

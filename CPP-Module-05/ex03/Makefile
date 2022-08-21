@@ -26,7 +26,7 @@ ${OBJS_DIR}:
 
 ${OBJS_DIR}%.o : %.cpp Makefile Bureaucrat.hpp Form.hpp \
 						ShrubberyCreationForm.hpp RobotomyRequestForm.hpp \
-						PresidentialPardonForm.hpp| ${OBJS_DIR}
+						PresidentialPardonForm.hpp Intern.hpp| ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} -c  $< -o $@
 
 #Utils
