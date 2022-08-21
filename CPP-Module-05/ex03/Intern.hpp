@@ -30,7 +30,12 @@ public:
         const char *what() const throw();
     };
 
-};
+private:
+    Form *callShrubberyCreationForm(std::string formTarget);
 
+    Form *callRobotomyRequestForm(std::string formTarget);
+
+    Form *callPresidentialPardonForm(std::string formTarget);
+};
 
 #endif //EX03_INTERN_HPP

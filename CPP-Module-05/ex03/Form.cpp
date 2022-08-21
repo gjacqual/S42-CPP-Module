@@ -63,7 +63,6 @@ void Form::checkRequirements(const Bureaucrat &executor) const {
         throw GradeTooHighException();
 }
 
-
 //Overload of the insertion («)
 std::ostream &operator<<(std::ostream &os, const Form &form) {
     os << "Form: " << form.getName() << ", Target:" << form.getTarget()

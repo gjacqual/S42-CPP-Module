@@ -30,6 +30,12 @@ Form *Intern::makeForm(std::string formName, std::string formTarget) {
             "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"
     };
 
+    Form *(Intern::*forms[3])(std::string formTarget) = {
+            &Intern::callShrubberyCreationForm,
+            &Intern::callRobotomyRequestForm,
+            &Intern::callPresidentialPardonForm
+    };
+    
     int result = -1;
     for (int i = 0; i < 3; ++i) {
         if (formName == requestArray[i])
@@ -41,14 +47,26 @@ Form *Intern::makeForm(std::string formName, std::string formTarget) {
               << formTarget << std::endl;
     switch (result) {
         case 0:
-            return (new ShrubberyCreationForm(formTarget));
+            return (this->*(forms[0]))(formTarget);
         case 1:
-            return (new RobotomyRequestForm(formTarget));
+            return (this->*(forms[1]))(formTarget);
         case 2:
-            return (new PresidentialPardonForm(formTarget));
+            return (this->*(forms[2]))(formTarget);
         default:
             throw FormKindNotFoundException();
     }
+}
+
+Form *Intern::callShrubberyCreationForm(std::string formTarget) {
+    return new ShrubberyCreationForm(formTarget);
+}
+
+Form *Intern::callRobotomyRequestForm(std::string formTarget) {
+    return new RobotomyRequestForm(formTarget);
+}
+
+Form *Intern::callPresidentialPardonForm(std::string formTarget) {
+    return new PresidentialPardonForm(formTarget);
 }
 
 const char *Intern::FormKindNotFoundException::what() const throw() {
