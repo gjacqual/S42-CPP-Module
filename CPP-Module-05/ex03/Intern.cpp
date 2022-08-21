@@ -31,18 +31,10 @@ Form *Intern::makeForm(std::string formName, std::string formTarget) {
             "ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"
     };
 
-    Form *forms[3] = {
-            new ShrubberyCreationForm(formTarget),
-            new RobotomyRequestForm(formTarget),
-            new PresidentialPardonForm(formTarget)
-    };
-
     int result = -1;
     for (int i = 0; i < 3; ++i) {
         if (formName == requestArray[i])
             result = i;
-        else
-            delete forms[i];
     }
     if (result < 0)
         throw FormKindNotFoundException();
@@ -50,11 +42,11 @@ Form *Intern::makeForm(std::string formName, std::string formTarget) {
               << formTarget << std::endl;
     switch (result) {
         case 0:
-            return (forms[0]);
+            return (new ShrubberyCreationForm(formTarget));
         case 1:
-            return (forms[1]);
+            return (new RobotomyRequestForm(formTarget));
         case 2:
-            return (forms[2]);
+            return (new PresidentialPardonForm(formTarget));
         default:
             throw FormKindNotFoundException();
     }

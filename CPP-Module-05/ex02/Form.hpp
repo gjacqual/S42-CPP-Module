@@ -24,7 +24,7 @@ public:
     Form(const Form &copy);
 
     // Destructor
-    ~Form();
+    virtual ~Form();
 
     // Operators
     Form &operator=(const Form &assign);
