@@ -10,6 +10,6 @@ int main(int argc, char **argv) {
         return 1;
     }
     ScalarConversion conversion(argv[1]);
-    conversion.detectType();
+    conversion.convert();
     return 0;
 }

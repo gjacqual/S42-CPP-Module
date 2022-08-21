@@ -41,6 +41,6 @@ re			:	fclean all
 # Leak Search
 seleak		:
 				@valgrind --leak-check=full --show-leak-kinds=all \
-				--leak-resolution=med  --track-origins=yes ./${NAME} r
+				--leak-resolution=med  --track-origins=yes ./${NAME} 0
 
 .PHONY		: 	all clean fclean re

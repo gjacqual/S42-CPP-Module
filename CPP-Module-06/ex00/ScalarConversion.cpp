@@ -20,58 +20,12 @@ ScalarConversion::~ScalarConversion() {}
 ScalarConversion &ScalarConversion::operator=(const ScalarConversion &assign) {
     if (this != &assign) {
         _inputString = assign._inputString;
-        const_cast<double&>(_value) = assign._value;
+        const_cast<double &>(_value) = assign._value;
     }
     return *this;
 }
 
-// Getters / Setters
-
-
 //Member functions
-
-double ScalarConversion::argToDouble() {
-    double value;
-    value = std::strtod(_inputString.c_str(), NULL);
-    if (value == 0.0 && isChar()) {
-        return(static_cast<double>(_inputString[0]));
-    }
-    return value;
-}
-
-void ScalarConversion::detectType() {
-
-    _value = argToDouble();
-//    std::cout << _value << std::endl;
-
-//    if (isHasDot()) {
-//        if (isFloat())
-//            std::cout << std::endl;
-////            printToFloat();
-//        else
-//            std::cout << std::endl;
-////            printToDouble();
-//    } else if (isChar())
-//        printToChar();
-//    else
-//        std::cout << std::endl;
-////        printToInt();
-}
-
-
-bool ScalarConversion::isHasDot() {
-    if (_inputString.find('.') != std::string::npos)
-        return true;
-    return
-            false;
-}
-
-bool ScalarConversion::isFloat() {
-    if (_inputString.find('f') != std::string::npos)
-        return true;
-    return
-            false;
-}
 
 bool ScalarConversion::isChar() {
     if (_inputString.length() == 1) {
@@ -82,59 +36,117 @@ bool ScalarConversion::isChar() {
     return false;
 }
 
-void ScalarConversion::printToChar() {
+bool ScalarConversion::isValidInput() const {
+    if (_value == 0.0 && !std::isdigit(_inputString[0]) &&
+        !std::isdigit(_inputString[1]))
+        return false;
+    return true;
+}
+
+double ScalarConversion::argToDouble() {
+    double value;
+    value = std::strtod(_inputString.c_str(), NULL);
+    if (value == 0.0 && isChar()) {
+        return (static_cast<double>(_inputString[0]));
+    }
+    return value;
+}
+
+void ScalarConversion::convert() {
+
+    _value = argToDouble();
+    printToChar();
+    printToInt();
+    printToFloat();
+    printToDouble();
+}
+
+char ScalarConversion::toChar() const {
+    if (_value < std::numeric_limits<char>::min() ||
+        _value > std::numeric_limits<char>::max() ||
+        std::isinf(_value) || std::isnan(_value))
+        throw ImpossibleConvertException();
+    else if (!std::isprint(static_cast<int>(_value)))
+        throw NonDisplayableCharException();
+    return static_cast<char>(_value);
+}
+
+int ScalarConversion::toInt() const {
+    if (!isValidInput())
+        throw ImpossibleConvertException();
+    if (_value < std::numeric_limits<int>::min() ||
+        _value > std::numeric_limits<int>::max() ||
+        std::isinf(_value) || std::isnan(_value))
+        throw ImpossibleConvertException();
+    return static_cast<int>(_value);
+}
+
+float ScalarConversion::toFloat() const {
+    if (!isValidInput())
+        throw ImpossibleConvertException();
+    if (std::isinf(_value))
+        return static_cast<float>(_value);
+    if (_value < -std::numeric_limits<float>::max() ||
+        _value > std::numeric_limits<float>::max())
+        throw ImpossibleConvertException();
+    return static_cast<float>(_value);
+}
+
+double ScalarConversion::toDouble() const {
+    if (!isValidInput())
+        throw ImpossibleConvertException();
+    if (std::isinf(_value))
+        return static_cast<double>(_value);
+    if (_value < -std::numeric_limits<double>::max() ||
+        _value > std::numeric_limits<double>::max())
+        throw ImpossibleConvertException();
+    return static_cast<double>(_value);
+}
+
+void ScalarConversion::printToChar() const {
     std::cout << "char: ";
     try {
         char charValue = toChar();
-        std::cout << "'"<< charValue << "'" <<  std::endl;
+        std::cout << "'" << charValue << "'" << std::endl;
     } catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
 }
 
-char ScalarConversion::toChar() const {
-    const char *str = _inputString.c_str();
-    if (std::isinf(str[0]) || std::isnan(str[0]))
-        throw ImpossibleConvertException();
-    else if (!std::isprint(str[0]))
-        throw NonDisplayableCharException();
-    return static_cast<char>(str[0]);
+void ScalarConversion::printToInt() const {
+    std::cout << "int: ";
+    try {
+        int intValue = toInt();
+        std::cout << intValue << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
-//int ScalarConversion::toInt() const {
-//    int value;
-//    try {
-//        value = std::stoi(_inputString);
-//    } catch(...) {
-//        throw ImpossibleConvertException();
-//    }
-//
-//
-//    return static_cast<char>(str[0]);
-//}
+void ScalarConversion::printToFloat() const {
+    std::cout << "float: " << std::fixed << std::setprecision(1);
+    try {
+        float floatValue = toFloat();
+        std::cout << floatValue << "f" << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+}
 
+void ScalarConversion::printToDouble() const {
+    std::cout << "double: " << std::fixed << std::setprecision(1);
+    try {
+        double doubleValue = toDouble();
+        std::cout << doubleValue << std::endl;
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+}
 
-
-
-//std::ostream &operator<<(std::ostream &os, const ScalarConversion &conversion) {
-//    os << "char: ";
-//    try {
-//        char charValue = conversion.toChar();
-//        os << charValue << std::endl;
-//    } catch (const std::exception &e) {
-//        os << e.what() << std::endl;
-//    }
-//
-//    return os;
-//}
 const char *ScalarConversion::NonDisplayableCharException::what() const throw() {
     return ("Non displayable");
 }
 
 const char *ScalarConversion::ImpossibleConvertException::what() const throw() {
     return ("impossible");
-}
-
-const char *ScalarConversion::InvalidInputException::what() const throw() {
-    return ("Error: Invalid Input!");
 }
