@@ -1,8 +1,8 @@
 #ifndef EX03_BUREAUCRAT_HPP
 #define EX03_BUREAUCRAT_HPP
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
 #include "Form.hpp"
 
 #define COLOR_CLEAR     "\033[0m"
