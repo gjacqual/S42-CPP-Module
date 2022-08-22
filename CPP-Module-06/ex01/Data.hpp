@@ -1,6 +1,9 @@
 #ifndef EX01_DATA_HPP
 #define EX01_DATA_HPP
 
+#define COLOR_CLEAR     "\033[0m"
+#define COLOR_YELLOW    "\033[0;33m"
+
 #include <iostream>
 #include <string>
 
