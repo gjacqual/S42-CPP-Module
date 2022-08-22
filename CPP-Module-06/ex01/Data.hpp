@@ -7,6 +7,9 @@
 #include <iostream>
 #include <string>
 
+// for type uintptr_t
+#include <stdint.h>
+
 struct Data {
     std::string _string;
     int _count;
