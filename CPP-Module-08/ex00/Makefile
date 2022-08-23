@@ -25,7 +25,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile easyfind.hpp | ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} ${STDCPP} -c  $< -o $@
 
 #Utils
