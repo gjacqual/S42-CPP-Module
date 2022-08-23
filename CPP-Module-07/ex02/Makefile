@@ -1,5 +1,5 @@
 # Program name
-NAME		:=	templates
+NAME		:=	array
 # Compilation Parameters
 CXX			:=	c++
 CXXFLAGS	:=	-Wall -Wextra -Werror
@@ -25,7 +25,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile Array.hpp| ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile Array.hpp Array.tpp| ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} ${STDCPP} -c  $< -o $@
 
 #Utils

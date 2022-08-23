@@ -8,14 +8,14 @@ Array<T>::Array() : _array(0), _size(0) {
 
 template<typename T>
 Array<T>::Array(unsigned int size) : _array(new T[size]), _size(size) {
-    std::cout << "Constructor called of Array with size" << size << std::endl;
+    std::cout << "Constructor called of Array with size: " << size << std::endl;
 }
 
 template<typename T>
 Array<T>::Array(const Array& copy)
         : _array(new T[copy._size]), _size(copy._size) {
     for (unsigned int i = 0; i < copy._size; i++)
-        _array[i] = copy.array[i];
+        _array[i] = copy._array[i];
     std::cout << "Copy Constructor called of Array" << std::endl;
 
 }
@@ -34,7 +34,7 @@ Array<T>& Array<T>::operator=(const Array<T>& assign) {
     std::cout << "Assigment operator called of Array" << std::endl;
     if (this != assign) {
         if (_size) {
-            delete [] _array;
+            delete[] _array;
             _array = 0;
             _size = 0;
         }
@@ -55,7 +55,7 @@ T& Array<T>::operator[](unsigned int i) {
 }
 
 template<typename T>
-T const& Array<T>::operator[](int i) const {
+const T& Array<T>::operator[](unsigned int i) const {
     if (!_array || i < 0 || i >= _size)
         throw OutOfBoundsException();
     return _array[i];

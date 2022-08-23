@@ -23,7 +23,7 @@ public:
 
     T& operator[](unsigned int i);
 
-    T const& operator[](int i) const;
+    const T& operator[](unsigned int i) const;
 
     //Member functions
 

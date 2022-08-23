@@ -1,65 +1,94 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "Array.hpp"
 
 #define C_CLEAR     "\033[0m"
+#define C_RED       "\033[1;31m"
 #define C_GREEN     "\033[0;32m"
 
-int main() {
+#define MAX_VAL 750
+
+int main(int, char**) {
 
     // **************************** Test 1 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: Int->>>"
+    std::cout << C_GREEN << "<<<-Test1: Create Empty array->>>"
               << C_CLEAR << std::endl;
     {
+        Array<int> arrayInt;
+        try {
+            arrayInt[0] = 10;
+        } catch (std::exception &e) {
+            std::cerr << C_RED << e.what() << C_CLEAR << std::endl;
+        }
 
     }
     std::cout << C_GREEN << "**************************************************"
               << C_CLEAR << std::endl;
     // **************************** Test 2 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: String->>>"
+    std::cout << C_GREEN << "<<<-Test1: Create Array with specific size->>>"
               << C_CLEAR << std::endl;
     {
-        std::string arrayStr[5] = {"one", "two", "three", "four", "end"};
-        iter(arrayStr, sizeof ( arrayStr ) / sizeof ( *arrayStr ), print);
+        Array<char> arrayChar(873);
+        try {
+            arrayChar[836] = 'a';
+        } catch (std::exception &e) {
+            std::cerr << C_RED << e.what() << C_CLEAR << std::endl;
+        }
+        std::cout << arrayChar[836] << std::endl;
+
     }
     std::cout << C_GREEN << "**************************************************"
               << C_CLEAR << std::endl;
     // **************************** Test 3 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: Double->>>"
+    std::cout << C_GREEN << "<<<- Test3: Test from subject ->>>"
               << C_CLEAR << std::endl;
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
     {
-        double arDouble[5] = {1.1, 14.23, 0.0, 56.234324, 0.234234324};
-        iter(arDouble, sizeof ( arDouble ) / sizeof ( *arDouble ), print);
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
     }
-    std::cout << C_GREEN << "**************************************************"
-              << C_CLEAR << std::endl;
-    // **************************** Test 4 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: Float->>>"
-              << C_CLEAR << std::endl;
+    //SCOPE
     {
-        float arrayFloat[5] = {1.1f, 14.23f, 0.0f, 56.234324f, 0.234234324f};
-        iter(arrayFloat, sizeof ( arrayFloat ) / sizeof ( *arrayFloat ), print);
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
     }
-    std::cout << C_GREEN << "**************************************************"
-              << C_CLEAR << std::endl;
-    // **************************** Test 5 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: Char->>>"
-              << C_CLEAR << std::endl;
+
+    for (int i = 0; i < MAX_VAL; i++)
     {
-        char arrayChar[3] = {'^', '|', '_'};
-        iter(arrayChar, sizeof ( arrayChar ) / sizeof ( *arrayChar ), print);
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
     }
-    std::cout << C_GREEN << "**************************************************"
-              << C_CLEAR << std::endl;
-    // **************************** Test 5 ***********************************//
-    std::cout << C_GREEN << "<<<-Test1: Complex Array->>>"
-              << C_CLEAR << std::endl;
+    try
     {
-        Awesome awesome[6];
-        iter(awesome, sizeof ( awesome ) / sizeof ( *awesome ), print);
+        numbers[-2] = 0;
     }
-    std::cout << C_GREEN << "**************************************************"
-              << C_CLEAR << std::endl;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+
 
     return 0;
 }
