@@ -49,8 +49,8 @@ int main() {
     std::cout << C_GREEN << "<<<-Test1: Double->>>"
               << C_CLEAR << std::endl;
     {
-        double arrayDouble[5] = {1.1, 14.23, 0.0, 56.234324, 0.234234324};
-        iter(arrayDouble, sizeof ( arrayDouble ) / sizeof ( *arrayDouble ), print);
+        double arDouble[5] = {1.1, 14.23, 0.0, 56.234324, 0.234234324};
+        iter(arDouble, sizeof ( arDouble ) / sizeof ( *arDouble ), print);
     }
     std::cout << C_GREEN << "**************************************************"
               << C_CLEAR << std::endl;
