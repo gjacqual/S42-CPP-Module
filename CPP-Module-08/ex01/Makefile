@@ -2,8 +2,8 @@
 NAME		:=	ex01
 # Compilation Parameters
 CXX			:=	c++
-CXXFLAGS	:=	-Wall -Wextra -Werror
-STDCPP		:=	-std=c++98
+CXXFLAGS	:=	-Wall -Wextra -Werror -g
+STDCPP		:=	-std=c++98 -pedantic
 RM			:=	rm -f
 
 # source files
