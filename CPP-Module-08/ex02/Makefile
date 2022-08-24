@@ -2,7 +2,7 @@
 NAME		:=	ex02
 # Compilation Parameters
 CXX			:=	c++
-CXXFLAGS	:=	-Wall -Wextra -Werror -g
+CXXFLAGS	:=	-Wall -Wextra -Werror
 STDCPP		:=	-std=c++98 -pedantic
 RM			:=	rm -f
 
@@ -25,7 +25,7 @@ ${NAME}		:	${OBJS}
 ${OBJS_DIR}:
 				@mkdir -p ${OBJS_DIR}
 
-${OBJS_DIR}%.o : %.cpp Makefile | ${OBJS_DIR}
+${OBJS_DIR}%.o : %.cpp Makefile MutantStack.hpp MutantStack.tpp| ${OBJS_DIR}
 				${CXX} ${CXXFLAGS} ${STDCPP} -c  $< -o $@
 
 #Utils
