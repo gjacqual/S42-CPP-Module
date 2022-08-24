@@ -1,25 +1,70 @@
+#ifndef MUTANTSTACK_TPP
+# define MUTANTSTACK_TPP
+
 #include "MutantStack.hpp"
 
 // Constructors
-MutantStack::MutantStack() {
-    std::cout << "Default Constructor called of MutantStack" << std::endl;
-}
+template<typename T>
+MutantStack<T>::MutantStack() {}
 
-MutantStack::MutantStack(const MutantStack& copy) {
+template<typename T>
+MutantStack<T>::MutantStack(const MutantStack<T>& copy) :  std::stack<T>() {
     std::cout << "Copy Constructor called of MutantStack" << std::endl;
+    *this = copy;
 }
 
 // Destructor
-MutantStack::~MutantStack() {
-    std::cout << "Destructor called of MutantStack" << std::endl;
+template<typename T>
+MutantStack<T>::~MutantStack() {
+//    std::cout << "Destructor called of MutantStack" << std::endl;
 }
 
 // Operators
-MutantStack& MutantStack::operator=(const MutantStack& assign) {
+template<typename T>
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack<T>& assign) {
     std::cout << "Assigment operator called of MutantStack" << std::endl;
+    this->std::stack<T>::operator=(assign);
     return *this;
 }
 
-// Getters / Setters
+template<typename T>
+typename MutantStack<T>::iterator MutantStack<T>::begin() {
+    return this->c.begin();
+}
 
-//Member functions
+template<typename T>
+typename MutantStack<T>::iterator MutantStack<T>::end() {
+    return this->c.end();
+}
+
+template<typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const {
+    return this->c.begin();
+}
+
+template<typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const {
+    return this->c.end();
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin() {
+    return this->c.rbegin();
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend() {
+    return this->c.rend();
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const {
+    return this->c.rbegin();
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const {
+    return this->c.rend();
+}
+
+#endif

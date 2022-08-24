@@ -3,29 +3,46 @@
 
 # include <iostream>
 # include <string>
+# include <stack>
 
-
-class MutantStack {
+template<typename T>
+class MutantStack : public std::stack<T> {
 public:
+    typedef typename std::stack<T>::container_type::iterator iterator;
+    typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+    typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+    typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
     // Constructors
-    MutantStack();
+    MutantStack<T>();
 
-    MutantStack(const MutantStack& copy);
+    MutantStack<T>(const MutantStack& copy);
 
     // Destructor
-    ~MutantStack();
+    ~MutantStack<T>();
 
     // Operators
-    MutantStack& operator=(const MutantStack& assign);
+    MutantStack<T>& operator=(const MutantStack& assign);
 
-    // Getters / Setters
+    iterator begin();
 
-    //Member functions
+    iterator end();
 
-private:
-    //data
+    const_iterator begin() const;
+
+    const_iterator end() const;
+
+    reverse_iterator rbegin();
+
+    reverse_iterator rend();
+
+    const_reverse_iterator rbegin() const;
+
+    const_reverse_iterator rend() const;
+
+
 };
 
+# include "MutantStack.tpp"
 
 #endif //EX02_MUTANTSTACK_HPP
